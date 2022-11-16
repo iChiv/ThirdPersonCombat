@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+public abstract class StateMachine : MonoBehaviour
 {
     private State currentState;
 
     void Update()
     {
+        //if(currentState == null)
+        //{
+        //    currentState.Tick(Time.deltaTime);
+        //}
         currentState?.Tick(Time.deltaTime);
     }
 
@@ -15,6 +19,6 @@ public class StateMachine : MonoBehaviour
     {
         currentState?.Exit();
         currentState = newState;
-        currentState?.Enter();        
+        currentState?.Enter();
     }
 }
